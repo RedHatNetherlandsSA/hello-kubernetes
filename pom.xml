@@ -10,12 +10,16 @@
 	</parent>
 	<groupId>org.acme.hellokubernetes</groupId>
 	<artifactId>hello-kubernetes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>hello-kubernetes</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.8</spring-cloud.version>
+		<jkube.build.strategy>jib</jkube.build.strategy>
+		<!--<jkube.generator.name>quay.io/sunix/sb-hw:${project.version}</jkube.generator.name> -->
+		<jkube.generator.name>quay.io/wael2000/hello-kubernetes:${project.version}</jkube.generator.name>
+		<jkube.createExternalUrls>true</jkube.createExternalUrls>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,7 +40,9 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
+ 
+ </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -54,6 +60,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jkube</groupId>
+				<artifactId>kubernetes-maven-plugin</artifactId>
+				<version>1.9.1</version>
+			  <configuration>
+					<resources>
+						<imagePullPolicy>Always</imagePullPolicy> 
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

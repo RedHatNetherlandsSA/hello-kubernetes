@@ -1,0 +1,1 @@
+./mvnw k8s:resource -Djkube.domain=apps.cluster-ptf66.ptf66.sandbox401.opentlc.com
