@@ -1,4 +1,4 @@
-package org.acme.hellokubernetes;
+package com.example.demo;
 
 import java.time.LocalTime;
 
